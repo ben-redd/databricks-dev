@@ -23,14 +23,14 @@ operation:
           stepCounter: 293ae80d-15da-4b0b-8538-8e573d435539
         config: {}
         dataType: LONG
-        description: ""
+        description: "1111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111"
         name: o_orderkey
         nullable: true
         sourceColumnReferences:
           - columnReferences:
               - columnCounter: 27251a40-1cb1-4170-afc8-7ba288bde251
                 stepCounter: 88da39b6-645a-4665-8afa-b199f858ce27
-            transform: ""
+            transform: CASE WHEN `orders`.`o_orderkey` IN ('foo') AND `orders`.`o_comment` = ('bar') THEN `orders`.`o_orderpriority` ELSE `orders`.`o_totalprice` END
       - appliedColumnTests: {}
         columnReference:
           columnCounter: 4aca8dd5-d0fc-45f2-b357-57f0aaacdf63
@@ -86,7 +86,7 @@ operation:
           - columnReferences:
               - columnCounter: 9d5c49be-d08c-4141-9267-4ea51d646b03
                 stepCounter: 88da39b6-645a-4665-8afa-b199f858ce27
-            transform: ""
+            transform: "\"orders\".\"o_orderdate\""
       - appliedColumnTests: {}
         columnReference:
           columnCounter: 97989981-70f3-4a74-85dc-80aec00ca4ec
