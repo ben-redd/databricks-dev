@@ -1,6 +1,6 @@
 fileVersion: 1
-id: bf781e60-1e8e-4d0e-9daf-b69e21459e11
-name: rename_node
+id: c037f98b-ce53-40b1-b8c5-48b146fb9ffd
+name: stg_nation
 operation:
   config:
     insertStrategy: INSERT
@@ -10,7 +10,7 @@ operation:
     truncateBefore: true
   database: ""
   deployEnabled: true
-  description: ""
+  description: A staging node off of nation
   isMultisource: false
   locationName: DESTINATION
   materializationType: table
@@ -19,8 +19,8 @@ operation:
     columns:
       - appliedColumnTests: {}
         columnReference:
-          columnCounter: 48ec9360-2341-4069-a7d0-2443142e07c8
-          stepCounter: bf781e60-1e8e-4d0e-9daf-b69e21459e11
+          columnCounter: cdb02b2f-b518-430b-912a-524dd6d0b3c7
+          stepCounter: c037f98b-ce53-40b1-b8c5-48b146fb9ffd
         config: {}
         dataType: LONG
         description: ""
@@ -28,13 +28,13 @@ operation:
         nullable: true
         sourceColumnReferences:
           - columnReferences:
-              - columnCounter: a5130b78-57c7-4d5b-8953-cc24e5d83f70
-                stepCounter: d62e4a14-383f-4d51-93fa-a963eafebcc7
+              - columnCounter: 31e8bb57-fdd5-44ca-8694-8c4e9afb7870
+                stepCounter: 4a3f9859-476a-4175-aa21-4bbb79fe8117
             transform: ""
       - appliedColumnTests: {}
         columnReference:
-          columnCounter: b3164c32-7820-4e28-b45c-50bafcaed930
-          stepCounter: bf781e60-1e8e-4d0e-9daf-b69e21459e11
+          columnCounter: 12b8b59c-dc34-47ef-bfa2-366ea4be6c7a
+          stepCounter: c037f98b-ce53-40b1-b8c5-48b146fb9ffd
         config: {}
         dataType: STRING
         description: ""
@@ -42,13 +42,13 @@ operation:
         nullable: true
         sourceColumnReferences:
           - columnReferences:
-              - columnCounter: 4637078d-5aba-4950-a49d-3c9391855202
-                stepCounter: d62e4a14-383f-4d51-93fa-a963eafebcc7
+              - columnCounter: 10833bf9-8ca4-4234-9209-afb8bdc054b9
+                stepCounter: 4a3f9859-476a-4175-aa21-4bbb79fe8117
             transform: ""
       - appliedColumnTests: {}
         columnReference:
-          columnCounter: 90cd18c6-1092-4a58-936d-cea3f653e6a9
-          stepCounter: bf781e60-1e8e-4d0e-9daf-b69e21459e11
+          columnCounter: 6ecc7b0b-cfb5-4228-b11e-eec761a80126
+          stepCounter: c037f98b-ce53-40b1-b8c5-48b146fb9ffd
         config: {}
         dataType: LONG
         description: ""
@@ -56,13 +56,13 @@ operation:
         nullable: true
         sourceColumnReferences:
           - columnReferences:
-              - columnCounter: c8fa77ac-3d14-40bc-9fcd-4ac74987b4a3
-                stepCounter: d62e4a14-383f-4d51-93fa-a963eafebcc7
+              - columnCounter: 74d4b7fc-e168-4d22-8e3f-2ef10768d41c
+                stepCounter: 4a3f9859-476a-4175-aa21-4bbb79fe8117
             transform: ""
       - appliedColumnTests: {}
         columnReference:
-          columnCounter: 388c601f-e276-47df-a03d-074cec4142e2
-          stepCounter: bf781e60-1e8e-4d0e-9daf-b69e21459e11
+          columnCounter: 117d64ce-94d1-4439-b4d5-e0647fe9b680
+          stepCounter: c037f98b-ce53-40b1-b8c5-48b146fb9ffd
         config: {}
         dataType: STRING
         description: ""
@@ -70,23 +70,26 @@ operation:
         nullable: true
         sourceColumnReferences:
           - columnReferences:
-              - columnCounter: 9c5aebf0-3cad-4ec4-b271-aa9352807234
-                stepCounter: d62e4a14-383f-4d51-93fa-a963eafebcc7
+              - columnCounter: ac7e67bc-09b9-4046-abda-9ac9f22a2d24
+                stepCounter: 4a3f9859-476a-4175-aa21-4bbb79fe8117
             transform: ""
     cteString: ""
+    description: ""
+    destinationName: ""
     enabledColumnTestIDs: []
+    materializationOption: ""
     sourceMapping:
       - aliases: {}
         customSQL:
           customSQL: ""
         dependencies:
-          - locationName: DESTINATION
-            nodeName: STG_nation1
+          - locationName: SOURCE
+            nodeName: nation
         join:
-          joinCondition: FROM {{ ref('DESTINATION', 'STG_nation1') }} `STG_nation1`
-        name: rename_node
+          joinCondition: FROM {{ ref('SOURCE', 'nation') }} `nation`
+        name: stg_nation
         noLinkRefs: []
-  name: rename_node
+  name: stg_nation
   overrideSQL: false
   schema: ""
   sqlType: Stage

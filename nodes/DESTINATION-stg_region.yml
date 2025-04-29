@@ -1,6 +1,6 @@
 fileVersion: 1
-id: 0ce88546-cfda-4632-b2ca-2bcb8e3d3358
-name: STG_advv_b
+id: cd7781d7-e6ab-467d-be23-c3ace50003a2
+name: stg_region
 operation:
   config:
     insertStrategy: INSERT
@@ -10,7 +10,7 @@ operation:
     truncateBefore: true
   database: ""
   deployEnabled: true
-  description: A staging node off of advv_b
+  description: A staging node off of region
   isMultisource: false
   locationName: DESTINATION
   materializationType: table
@@ -19,45 +19,45 @@ operation:
     columns:
       - appliedColumnTests: {}
         columnReference:
-          columnCounter: 583d76e5-9d8e-4b57-9870-fe65f14614a2
-          stepCounter: 0ce88546-cfda-4632-b2ca-2bcb8e3d3358
+          columnCounter: 0d0bc2ae-77e2-42a1-bcdf-5f88f8d90572
+          stepCounter: cd7781d7-e6ab-467d-be23-c3ace50003a2
         config: {}
         dataType: LONG
         description: ""
-        name: ps_suppkey
+        name: r_regionkey
         nullable: true
         sourceColumnReferences:
           - columnReferences:
-              - columnCounter: 8ff52017-5b47-44c3-8472-5ff3bf9bbfc0
-                stepCounter: 9e0718b8-06cf-45f9-8dcb-cb4eb6a91dae
+              - columnCounter: 57197d33-560f-472e-8a0d-78fc87681557
+                stepCounter: 1e9ac330-3607-4244-a417-73595a247de4
             transform: ""
       - appliedColumnTests: {}
         columnReference:
-          columnCounter: ca0ddf0c-bc46-43dc-97bc-e1a6e125d1d5
-          stepCounter: 0ce88546-cfda-4632-b2ca-2bcb8e3d3358
+          columnCounter: 43e2b153-bdbe-4297-8081-fed3f8c3c144
+          stepCounter: cd7781d7-e6ab-467d-be23-c3ace50003a2
         config: {}
-        dataType: INT
+        dataType: STRING
         description: ""
-        name: ps_availqty
+        name: r_name
         nullable: true
         sourceColumnReferences:
           - columnReferences:
-              - columnCounter: ead425ed-d0e9-4fd7-a3dc-f572a6db154d
-                stepCounter: 9e0718b8-06cf-45f9-8dcb-cb4eb6a91dae
+              - columnCounter: 4e2f5729-8aa7-4659-b4d6-745d394f29e6
+                stepCounter: 1e9ac330-3607-4244-a417-73595a247de4
             transform: ""
       - appliedColumnTests: {}
         columnReference:
-          columnCounter: 2d84d899-fb57-408d-91ac-3f8367a93137
-          stepCounter: 0ce88546-cfda-4632-b2ca-2bcb8e3d3358
+          columnCounter: f81592bd-762a-498f-8bff-b70aae709c67
+          stepCounter: cd7781d7-e6ab-467d-be23-c3ace50003a2
         config: {}
-        dataType: DECIMAL
+        dataType: STRING
         description: ""
-        name: ps_supplycost
+        name: r_comment
         nullable: true
         sourceColumnReferences:
           - columnReferences:
-              - columnCounter: 96f961db-7f44-4e12-a6ca-296ffaf9d2a1
-                stepCounter: 9e0718b8-06cf-45f9-8dcb-cb4eb6a91dae
+              - columnCounter: f3e22c6c-4988-4d2d-a68a-e2a3a5949b92
+                stepCounter: 1e9ac330-3607-4244-a417-73595a247de4
             transform: ""
     cteString: ""
     description: ""
@@ -69,13 +69,13 @@ operation:
         customSQL:
           customSQL: ""
         dependencies:
-          - locationName: DESTINATION
-            nodeName: advv_b
+          - locationName: SOURCE
+            nodeName: region
         join:
-          joinCondition: FROM {{ ref('DESTINATION', 'advv_b') }} `advv_b`
-        name: stg_b
+          joinCondition: FROM {{ ref('SOURCE', 'region') }} `region`
+        name: stg_region
         noLinkRefs: []
-  name: STG_advv_b
+  name: stg_region
   overrideSQL: false
   schema: ""
   sqlType: Stage
