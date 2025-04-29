@@ -1,0 +1,67 @@
+fileVersion: 1
+id: c14d8cbe-1fbe-4a0f-bab1-9cd2330fe38c
+name: stg_daily_14_total_short22
+operation:
+  config:
+    insertStrategy: INSERT
+    postSQL: ""
+    preSQL: ""
+    testsEnabled: true
+    truncateBefore: true
+  database: ""
+  deployEnabled: true
+  description: A staging node off of stg_daily_14_total_short
+  isMultisource: false
+  locationName: DESTINATION
+  materializationType: table
+  metadata:
+    appliedNodeTests: []
+    columns:
+      - appliedColumnTests: {}
+        columnReference:
+          columnCounter: 7173406d-859e-41f9-ba90-fabe08454e12
+          stepCounter: c14d8cbe-1fbe-4a0f-bab1-9cd2330fe38c
+        config: {}
+        dataType: TIMESTAMP
+        description: ""
+        name: t
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: f34b6f68-8341-450c-8766-24c297b9d0dd
+                stepCounter: d70d3362-274c-4aab-b9f3-4a84ccdb7188
+            transform: ""
+      - appliedColumnTests: {}
+        columnReference:
+          columnCounter: 57ebceaf-87fa-4ad3-b512-f9b0cc7448bd
+          stepCounter: c14d8cbe-1fbe-4a0f-bab1-9cd2330fe38c
+        config: {}
+        dataType: VARIANT
+        description: ""
+        name: v
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: ac471bb2-fff9-4137-8c40-8c82c98fa926
+                stepCounter: d70d3362-274c-4aab-b9f3-4a84ccdb7188
+            transform: ""
+    cteString: ""
+    enabledColumnTestIDs: []
+    sourceMapping:
+      - aliases: {}
+        customSQL:
+          customSQL: ""
+        dependencies:
+          - locationName: DESTINATION
+            nodeName: v_daily_14_total_short4
+        join:
+          joinCondition: FROM {{ ref('DESTINATION', 'v_daily_14_total_short4') }} `v_daily_14_total_short4`
+        name: stg_daily_14_total_short22
+        noLinkRefs: []
+  name: stg_daily_14_total_short22
+  overrideSQL: false
+  schema: ""
+  sqlType: Stage
+  type: sql
+  version: 1
+type: Node
