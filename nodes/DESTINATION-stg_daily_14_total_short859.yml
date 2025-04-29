@@ -1,0 +1,67 @@
+fileVersion: 1
+id: d770b274-bd1a-4c19-a6e1-22ad72e981d3
+name: stg_daily_14_total_short859
+operation:
+  config:
+    insertStrategy: INSERT
+    postSQL: ""
+    preSQL: ""
+    testsEnabled: true
+    truncateBefore: true
+  database: ""
+  deployEnabled: true
+  description: ""
+  isMultisource: false
+  locationName: DESTINATION
+  materializationType: table
+  metadata:
+    appliedNodeTests: []
+    columns:
+      - appliedColumnTests: {}
+        columnReference:
+          columnCounter: e00bfcf1-3c13-42e5-a141-cdbe36b4d25c
+          stepCounter: d770b274-bd1a-4c19-a6e1-22ad72e981d3
+        config: {}
+        dataType: TIMESTAMP
+        description: ""
+        name: t
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: cfa40940-e28d-4944-a486-96c3eba52bd1
+                stepCounter: a9b88afc-791e-47bc-b822-7e9657865911
+            transform: ""
+      - appliedColumnTests: {}
+        columnReference:
+          columnCounter: a1b1ef02-fb38-4428-bd59-03391264e291
+          stepCounter: d770b274-bd1a-4c19-a6e1-22ad72e981d3
+        config: {}
+        dataType: VARIANT
+        description: ""
+        name: v
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: 2b71c2ca-a845-4af0-b1bc-28ad1cba6b92
+                stepCounter: a9b88afc-791e-47bc-b822-7e9657865911
+            transform: ""
+    cteString: ""
+    enabledColumnTestIDs: []
+    sourceMapping:
+      - aliases: {}
+        customSQL:
+          customSQL: ""
+        dependencies:
+          - locationName: DESTINATION
+            nodeName: stg_daily_14_total_short184
+        join:
+          joinCondition: FROM {{ ref('DESTINATION', 'stg_daily_14_total_short184') }} `stg_daily_14_total_short184`
+        name: stg_daily_14_total_short859
+        noLinkRefs: []
+  name: stg_daily_14_total_short859
+  overrideSQL: false
+  schema: ""
+  sqlType: Stage
+  type: sql
+  version: 1
+type: Node

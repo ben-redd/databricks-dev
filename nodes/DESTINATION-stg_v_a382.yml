@@ -1,0 +1,81 @@
+fileVersion: 1
+id: 88be73fd-245d-4ff6-bb19-c0645de67710
+name: stg_v_a382
+operation:
+  config:
+    insertStrategy: INSERT
+    postSQL: ""
+    preSQL: ""
+    testsEnabled: true
+    truncateBefore: true
+  database: ""
+  deployEnabled: true
+  description: A staging node off of v_a
+  isMultisource: false
+  locationName: DESTINATION
+  materializationType: table
+  metadata:
+    appliedNodeTests: []
+    columns:
+      - appliedColumnTests: {}
+        columnReference:
+          columnCounter: f46e4ed3-60eb-4199-8142-070333df3da2
+          stepCounter: 88be73fd-245d-4ff6-bb19-c0645de67710
+        config: {}
+        dataType: LONG
+        description: ""
+        name: ps_suppkey
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: c8773a06-a02d-4c22-b3d1-fbaab10b1559
+                stepCounter: e670caf9-e43d-4e7b-9253-fc61ced31c52
+            transform: ""
+      - appliedColumnTests: {}
+        columnReference:
+          columnCounter: a1ba4174-5505-4d58-8dba-602a87ed6580
+          stepCounter: 88be73fd-245d-4ff6-bb19-c0645de67710
+        config: {}
+        dataType: INT
+        description: ""
+        name: ps_availqty
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: a6852ccc-f334-429a-8e17-077142c0a17e
+                stepCounter: e670caf9-e43d-4e7b-9253-fc61ced31c52
+            transform: ""
+      - appliedColumnTests: {}
+        columnReference:
+          columnCounter: 03560651-7362-407e-8f83-2649ddfd4332
+          stepCounter: 88be73fd-245d-4ff6-bb19-c0645de67710
+        config: {}
+        dataType: DECIMAL
+        description: ""
+        name: ps_supplycost
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: d71bedf1-acda-409a-97df-b09b794e4461
+                stepCounter: e670caf9-e43d-4e7b-9253-fc61ced31c52
+            transform: ""
+    cteString: ""
+    enabledColumnTestIDs: []
+    sourceMapping:
+      - aliases: {}
+        customSQL:
+          customSQL: ""
+        dependencies:
+          - locationName: DESTINATION
+            nodeName: stg_v_a141
+        join:
+          joinCondition: FROM {{ ref('DESTINATION', 'stg_v_a141') }} `stg_v_a141`
+        name: stg_v_a382
+        noLinkRefs: []
+  name: stg_v_a382
+  overrideSQL: false
+  schema: ""
+  sqlType: Stage
+  type: sql
+  version: 1
+type: Node

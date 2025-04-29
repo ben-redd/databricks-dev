@@ -1,0 +1,67 @@
+fileVersion: 1
+id: 7d4f02fb-4960-446e-adef-b1b57d1ef582
+name: stg_daily_14_total_short770
+operation:
+  config:
+    insertStrategy: INSERT
+    postSQL: ""
+    preSQL: ""
+    testsEnabled: true
+    truncateBefore: true
+  database: ""
+  deployEnabled: true
+  description: ""
+  isMultisource: false
+  locationName: DESTINATION
+  materializationType: table
+  metadata:
+    appliedNodeTests: []
+    columns:
+      - appliedColumnTests: {}
+        columnReference:
+          columnCounter: ebc34479-37a0-4934-b0f1-845d4a5e9d5f
+          stepCounter: 7d4f02fb-4960-446e-adef-b1b57d1ef582
+        config: {}
+        dataType: TIMESTAMP
+        description: ""
+        name: t
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: eaa795c8-d291-42e3-81db-2b979c182b83
+                stepCounter: ec9da0a1-7a06-47e5-9439-8a2a8ae92376
+            transform: ""
+      - appliedColumnTests: {}
+        columnReference:
+          columnCounter: 96a94137-1573-4b6c-b2fa-4d7d58637787
+          stepCounter: 7d4f02fb-4960-446e-adef-b1b57d1ef582
+        config: {}
+        dataType: VARIANT
+        description: ""
+        name: v
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: 862a43a3-72cf-467b-9fec-74ba8ffb92ab
+                stepCounter: ec9da0a1-7a06-47e5-9439-8a2a8ae92376
+            transform: ""
+    cteString: ""
+    enabledColumnTestIDs: []
+    sourceMapping:
+      - aliases: {}
+        customSQL:
+          customSQL: ""
+        dependencies:
+          - locationName: DESTINATION
+            nodeName: v_daily_14_total_short78
+        join:
+          joinCondition: FROM {{ ref('DESTINATION', 'v_daily_14_total_short78') }} `v_daily_14_total_short78`
+        name: stg_daily_14_total_short770
+        noLinkRefs: []
+  name: stg_daily_14_total_short770
+  overrideSQL: false
+  schema: ""
+  sqlType: Stage
+  type: sql
+  version: 1
+type: Node

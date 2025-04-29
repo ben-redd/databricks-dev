@@ -1,0 +1,95 @@
+fileVersion: 1
+id: 7c8b3b61-e12f-44c1-84e2-59e897680cc4
+name: stg_nation737
+operation:
+  config:
+    insertStrategy: INSERT
+    postSQL: ""
+    preSQL: ""
+    testsEnabled: true
+    truncateBefore: true
+  database: ""
+  deployEnabled: true
+  description: A staging node off of nation
+  isMultisource: false
+  locationName: DESTINATION
+  materializationType: table
+  metadata:
+    appliedNodeTests: []
+    columns:
+      - appliedColumnTests: {}
+        columnReference:
+          columnCounter: fd1b6fe8-5e36-46e4-bac0-7ebc22dbb5f5
+          stepCounter: 7c8b3b61-e12f-44c1-84e2-59e897680cc4
+        config: {}
+        dataType: LONG
+        description: ""
+        name: n_nationkey
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: d65b9883-009a-4fba-9bc0-e495eda5e444
+                stepCounter: 42fd0b01-dd2d-4f0c-81b4-712abd3bbfaa
+            transform: ""
+      - appliedColumnTests: {}
+        columnReference:
+          columnCounter: 5589676c-bc1c-49ce-8c96-bcbc01407dfe
+          stepCounter: 7c8b3b61-e12f-44c1-84e2-59e897680cc4
+        config: {}
+        dataType: STRING
+        description: ""
+        name: n_name
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: f1e7f001-4ecf-47f9-9713-844b34dd45ce
+                stepCounter: 42fd0b01-dd2d-4f0c-81b4-712abd3bbfaa
+            transform: ""
+      - appliedColumnTests: {}
+        columnReference:
+          columnCounter: abff095c-d045-41f7-afa6-61e5959099db
+          stepCounter: 7c8b3b61-e12f-44c1-84e2-59e897680cc4
+        config: {}
+        dataType: LONG
+        description: ""
+        name: n_regionkey
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: b8125ef2-c04b-4360-8510-6be178e62624
+                stepCounter: 42fd0b01-dd2d-4f0c-81b4-712abd3bbfaa
+            transform: ""
+      - appliedColumnTests: {}
+        columnReference:
+          columnCounter: 1c50b362-574f-4133-9cb1-6acf1b8113f4
+          stepCounter: 7c8b3b61-e12f-44c1-84e2-59e897680cc4
+        config: {}
+        dataType: STRING
+        description: ""
+        name: n_comment
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: f13fd3e4-f3e4-4337-8c79-7d466308f95e
+                stepCounter: 42fd0b01-dd2d-4f0c-81b4-712abd3bbfaa
+            transform: ""
+    cteString: ""
+    enabledColumnTestIDs: []
+    sourceMapping:
+      - aliases: {}
+        customSQL:
+          customSQL: ""
+        dependencies:
+          - locationName: DESTINATION
+            nodeName: v_nation89
+        join:
+          joinCondition: FROM {{ ref('DESTINATION', 'v_nation89') }} `v_nation89`
+        name: stg_nation737
+        noLinkRefs: []
+  name: stg_nation737
+  overrideSQL: false
+  schema: ""
+  sqlType: Stage
+  type: sql
+  version: 1
+type: Node
