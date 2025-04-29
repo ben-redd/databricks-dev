@@ -1,0 +1,67 @@
+fileVersion: 1
+id: 0a3385ce-70d2-457e-aa4e-9baf693e4f44
+name: stg_daily_14_total_short412
+operation:
+  config:
+    insertStrategy: INSERT
+    postSQL: ""
+    preSQL: ""
+    testsEnabled: true
+    truncateBefore: true
+  database: ""
+  deployEnabled: true
+  description: A staging node off of stg_daily_14_total_short
+  isMultisource: false
+  locationName: DESTINATION
+  materializationType: table
+  metadata:
+    appliedNodeTests: []
+    columns:
+      - appliedColumnTests: {}
+        columnReference:
+          columnCounter: 9742cca4-be7e-498d-8d2a-d0b097df8019
+          stepCounter: 0a3385ce-70d2-457e-aa4e-9baf693e4f44
+        config: {}
+        dataType: TIMESTAMP
+        description: ""
+        name: t
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: 49c4d613-186b-4db7-bcff-91a49837da58
+                stepCounter: d96b0dd2-b3b0-4657-931f-16a687854ac6
+            transform: ""
+      - appliedColumnTests: {}
+        columnReference:
+          columnCounter: e5aa0275-afde-4ad6-87b9-d36dc7f18382
+          stepCounter: 0a3385ce-70d2-457e-aa4e-9baf693e4f44
+        config: {}
+        dataType: VARIANT
+        description: ""
+        name: v
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: 6c2b52aa-b12f-48a1-8575-e114f1c38158
+                stepCounter: d96b0dd2-b3b0-4657-931f-16a687854ac6
+            transform: ""
+    cteString: ""
+    enabledColumnTestIDs: []
+    sourceMapping:
+      - aliases: {}
+        customSQL:
+          customSQL: ""
+        dependencies:
+          - locationName: DESTINATION
+            nodeName: stg_daily_14_total_short82
+        join:
+          joinCondition: FROM {{ ref('DESTINATION', 'stg_daily_14_total_short82') }} `stg_daily_14_total_short82`
+        name: stg_daily_14_total_short412
+        noLinkRefs: []
+  name: stg_daily_14_total_short412
+  overrideSQL: false
+  schema: ""
+  sqlType: Stage
+  type: sql
+  version: 1
+type: Node

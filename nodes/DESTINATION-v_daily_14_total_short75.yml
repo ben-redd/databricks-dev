@@ -1,0 +1,66 @@
+fileVersion: 1
+id: 72de1005-1c6d-471e-9921-dbe10a0a37ca
+name: v_daily_14_total_short75
+operation:
+  config:
+    OverrideSQLCreate: false
+    groupByAll: false
+    insertStrategy: UNION
+    selectDistinct: false
+  database: ""
+  deployEnabled: true
+  description: ""
+  isMultisource: false
+  locationName: DESTINATION
+  materializationType: view
+  metadata:
+    appliedNodeTests: []
+    columns:
+      - appliedColumnTests: {}
+        columnReference:
+          columnCounter: 6ab629b8-7d21-4db3-9a7a-7e9ef79abe82
+          stepCounter: 72de1005-1c6d-471e-9921-dbe10a0a37ca
+        config: {}
+        dataType: TIMESTAMP
+        description: ""
+        name: t
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: 6bc39c54-cc2b-4e0b-b5ee-4cc10552c8a4
+                stepCounter: 5846ed6a-2c14-4c89-aedc-85bcb9cf1751
+            transform: ""
+      - appliedColumnTests: {}
+        columnReference:
+          columnCounter: 2b35e3d4-cdf4-4e9d-98e6-38c65f7924a0
+          stepCounter: 72de1005-1c6d-471e-9921-dbe10a0a37ca
+        config: {}
+        dataType: VARIANT
+        description: ""
+        name: v
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: 28f03fac-eab1-442f-a029-e8ad70a3f25e
+                stepCounter: 5846ed6a-2c14-4c89-aedc-85bcb9cf1751
+            transform: ""
+    cteString: ""
+    enabledColumnTestIDs: []
+    sourceMapping:
+      - aliases: {}
+        customSQL:
+          customSQL: ""
+        dependencies:
+          - locationName: DESTINATION
+            nodeName: stg_daily_14_total_short75
+        join:
+          joinCondition: FROM {{ ref('DESTINATION', 'stg_daily_14_total_short75') }} `stg_daily_14_total_short75`
+        name: v_daily_14_total_short75
+        noLinkRefs: []
+  name: v_daily_14_total_short75
+  overrideSQL: false
+  schema: ""
+  sqlType: View
+  type: sql
+  version: 1
+type: Node

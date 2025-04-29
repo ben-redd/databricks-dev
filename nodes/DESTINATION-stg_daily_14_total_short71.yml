@@ -1,0 +1,67 @@
+fileVersion: 1
+id: e069212f-1039-46a3-8a0d-64524e6c17ab
+name: stg_daily_14_total_short71
+operation:
+  config:
+    insertStrategy: INSERT
+    postSQL: ""
+    preSQL: ""
+    testsEnabled: true
+    truncateBefore: true
+  database: ""
+  deployEnabled: true
+  description: ""
+  isMultisource: false
+  locationName: DESTINATION
+  materializationType: table
+  metadata:
+    appliedNodeTests: []
+    columns:
+      - appliedColumnTests: {}
+        columnReference:
+          columnCounter: e2b866c8-9914-4f44-92e7-a6a8897e2719
+          stepCounter: e069212f-1039-46a3-8a0d-64524e6c17ab
+        config: {}
+        dataType: TIMESTAMP
+        description: ""
+        name: t
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: 0127d129-954d-48b0-8203-1d3568f688d5
+                stepCounter: 5ed646c8-340b-45b0-aa4b-22142b4c0102
+            transform: ""
+      - appliedColumnTests: {}
+        columnReference:
+          columnCounter: 3c7cbf68-3f2b-428f-a59f-fe35729b4309
+          stepCounter: e069212f-1039-46a3-8a0d-64524e6c17ab
+        config: {}
+        dataType: VARIANT
+        description: ""
+        name: v
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: f0b995a3-5894-4e85-8f97-e5dcb45ccf16
+                stepCounter: 5ed646c8-340b-45b0-aa4b-22142b4c0102
+            transform: ""
+    cteString: ""
+    enabledColumnTestIDs: []
+    sourceMapping:
+      - aliases: {}
+        customSQL:
+          customSQL: ""
+        dependencies:
+          - locationName: DESTINATION
+            nodeName: stg_daily_14_total_short11
+        join:
+          joinCondition: FROM {{ ref('DESTINATION', 'stg_daily_14_total_short11') }} `stg_daily_14_total_short11`
+        name: stg_daily_14_total_short71
+        noLinkRefs: []
+  name: stg_daily_14_total_short71
+  overrideSQL: false
+  schema: ""
+  sqlType: Stage
+  type: sql
+  version: 1
+type: Node

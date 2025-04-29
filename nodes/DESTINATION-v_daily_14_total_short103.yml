@@ -1,0 +1,66 @@
+fileVersion: 1
+id: 4887959c-099f-43d0-ac00-43028e0d4347
+name: v_daily_14_total_short103
+operation:
+  config:
+    OverrideSQLCreate: false
+    groupByAll: false
+    insertStrategy: UNION
+    selectDistinct: false
+  database: ""
+  deployEnabled: true
+  description: A staging node off of stg_daily_14_total_short
+  isMultisource: false
+  locationName: DESTINATION
+  materializationType: view
+  metadata:
+    appliedNodeTests: []
+    columns:
+      - appliedColumnTests: {}
+        columnReference:
+          columnCounter: a0b4fed9-0166-4d92-84ce-267ef46edc3a
+          stepCounter: 4887959c-099f-43d0-ac00-43028e0d4347
+        config: {}
+        dataType: TIMESTAMP
+        description: ""
+        name: t
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: 49c4d613-186b-4db7-bcff-91a49837da58
+                stepCounter: d96b0dd2-b3b0-4657-931f-16a687854ac6
+            transform: ""
+      - appliedColumnTests: {}
+        columnReference:
+          columnCounter: 7e7cd920-ccf4-4200-8cf0-0c90ca066679
+          stepCounter: 4887959c-099f-43d0-ac00-43028e0d4347
+        config: {}
+        dataType: VARIANT
+        description: ""
+        name: v
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: 6c2b52aa-b12f-48a1-8575-e114f1c38158
+                stepCounter: d96b0dd2-b3b0-4657-931f-16a687854ac6
+            transform: ""
+    cteString: ""
+    enabledColumnTestIDs: []
+    sourceMapping:
+      - aliases: {}
+        customSQL:
+          customSQL: ""
+        dependencies:
+          - locationName: DESTINATION
+            nodeName: stg_daily_14_total_short82
+        join:
+          joinCondition: FROM {{ ref('DESTINATION', 'stg_daily_14_total_short82') }} `stg_daily_14_total_short82`
+        name: v_daily_14_total_short103
+        noLinkRefs: []
+  name: v_daily_14_total_short103
+  overrideSQL: false
+  schema: ""
+  sqlType: View
+  type: sql
+  version: 1
+type: Node

@@ -1,0 +1,80 @@
+fileVersion: 1
+id: f48fc212-c05a-4ff2-a6ef-9e5a838066cb
+name: v_a63
+operation:
+  config:
+    OverrideSQLCreate: false
+    groupByAll: false
+    insertStrategy: UNION
+    selectDistinct: false
+  database: ""
+  deployEnabled: true
+  description: ""
+  isMultisource: false
+  locationName: DESTINATION
+  materializationType: view
+  metadata:
+    appliedNodeTests: []
+    columns:
+      - appliedColumnTests: {}
+        columnReference:
+          columnCounter: 7d1908dd-7087-4b2c-abf5-2a56bdea25ca
+          stepCounter: f48fc212-c05a-4ff2-a6ef-9e5a838066cb
+        config: {}
+        dataType: LONG
+        description: ""
+        name: ps_suppkey
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: c27ac412-c37b-47f7-bfb4-fb770f35f87f
+                stepCounter: 983397e5-2c6f-46ff-86d2-4f202d9739c4
+            transform: ""
+      - appliedColumnTests: {}
+        columnReference:
+          columnCounter: 07ad2bb2-258f-4942-a6e4-f1b141e49763
+          stepCounter: f48fc212-c05a-4ff2-a6ef-9e5a838066cb
+        config: {}
+        dataType: INT
+        description: ""
+        name: ps_availqty
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: c1b24040-3c4c-4877-b9e2-0b097efc4736
+                stepCounter: 983397e5-2c6f-46ff-86d2-4f202d9739c4
+            transform: ""
+      - appliedColumnTests: {}
+        columnReference:
+          columnCounter: 4730ce9d-c87f-4676-949d-5f61d54d8fc6
+          stepCounter: f48fc212-c05a-4ff2-a6ef-9e5a838066cb
+        config: {}
+        dataType: DECIMAL
+        description: ""
+        name: ps_supplycost
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: 7e768e3a-d8eb-4b2a-b3e2-cd0531ad22e4
+                stepCounter: 983397e5-2c6f-46ff-86d2-4f202d9739c4
+            transform: ""
+    cteString: ""
+    enabledColumnTestIDs: []
+    sourceMapping:
+      - aliases: {}
+        customSQL:
+          customSQL: ""
+        dependencies:
+          - locationName: DESTINATION
+            nodeName: stg_a63
+        join:
+          joinCondition: FROM {{ ref('DESTINATION', 'stg_a63') }} `stg_a63`
+        name: v_a63
+        noLinkRefs: []
+  name: v_a63
+  overrideSQL: false
+  schema: ""
+  sqlType: View
+  type: sql
+  version: 1
+type: Node

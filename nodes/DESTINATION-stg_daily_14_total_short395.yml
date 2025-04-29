@@ -1,0 +1,67 @@
+fileVersion: 1
+id: 6e97c219-b825-4da6-9051-43265ff82c85
+name: stg_daily_14_total_short395
+operation:
+  config:
+    insertStrategy: INSERT
+    postSQL: ""
+    preSQL: ""
+    testsEnabled: true
+    truncateBefore: true
+  database: ""
+  deployEnabled: true
+  description: ""
+  isMultisource: false
+  locationName: DESTINATION
+  materializationType: table
+  metadata:
+    appliedNodeTests: []
+    columns:
+      - appliedColumnTests: {}
+        columnReference:
+          columnCounter: df36297b-e9ba-4570-83ce-1e363a9f6431
+          stepCounter: 6e97c219-b825-4da6-9051-43265ff82c85
+        config: {}
+        dataType: TIMESTAMP
+        description: ""
+        name: t
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: eb833fe9-eae0-4a69-81b9-589146d52a86
+                stepCounter: 8d0387c3-3ec8-4455-bd23-bfc1f5a5290b
+            transform: ""
+      - appliedColumnTests: {}
+        columnReference:
+          columnCounter: 70e4e9fb-b0ac-4ce0-be14-e0e9c7de0357
+          stepCounter: 6e97c219-b825-4da6-9051-43265ff82c85
+        config: {}
+        dataType: VARIANT
+        description: ""
+        name: v
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: 278c8291-6c9e-4270-bc8d-dccc8ec02da5
+                stepCounter: 8d0387c3-3ec8-4455-bd23-bfc1f5a5290b
+            transform: ""
+    cteString: ""
+    enabledColumnTestIDs: []
+    sourceMapping:
+      - aliases: {}
+        customSQL:
+          customSQL: ""
+        dependencies:
+          - locationName: DESTINATION
+            nodeName: stg_daily_14_total_short91
+        join:
+          joinCondition: FROM {{ ref('DESTINATION', 'stg_daily_14_total_short91') }} `stg_daily_14_total_short91`
+        name: stg_daily_14_total_short395
+        noLinkRefs: []
+  name: stg_daily_14_total_short395
+  overrideSQL: false
+  schema: ""
+  sqlType: Stage
+  type: sql
+  version: 1
+type: Node
