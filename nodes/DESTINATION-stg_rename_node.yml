@@ -1,0 +1,95 @@
+fileVersion: 1
+id: 453a67b9-2ca7-4835-a626-bbbbfa6a69ec
+name: stg_rename_node
+operation:
+  config:
+    insertStrategy: INSERT
+    postSQL: ""
+    preSQL: ""
+    testsEnabled: true
+    truncateBefore: true
+  database: ""
+  deployEnabled: true
+  description: ""
+  isMultisource: false
+  locationName: DESTINATION
+  materializationType: table
+  metadata:
+    appliedNodeTests: []
+    columns:
+      - appliedColumnTests: {}
+        columnReference:
+          columnCounter: 61c08984-f51c-4061-8d60-54b1fc423c46
+          stepCounter: 453a67b9-2ca7-4835-a626-bbbbfa6a69ec
+        config: {}
+        dataType: LONG
+        description: Test
+        name: n_nationkey
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: 48ec9360-2341-4069-a7d0-2443142e07c8
+                stepCounter: bf781e60-1e8e-4d0e-9daf-b69e21459e11
+            transform: ""
+      - appliedColumnTests: {}
+        columnReference:
+          columnCounter: 7961a5c6-76d7-4ca3-aad2-f883b3da24ef
+          stepCounter: 453a67b9-2ca7-4835-a626-bbbbfa6a69ec
+        config: {}
+        dataType: STRING
+        description: ""
+        name: n_name
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: b3164c32-7820-4e28-b45c-50bafcaed930
+                stepCounter: bf781e60-1e8e-4d0e-9daf-b69e21459e11
+            transform: ""
+      - appliedColumnTests: {}
+        columnReference:
+          columnCounter: 2830b790-c6b2-4cb0-a861-620cdc958ea1
+          stepCounter: 453a67b9-2ca7-4835-a626-bbbbfa6a69ec
+        config: {}
+        dataType: LONG
+        description: ""
+        name: n_regionkey
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: 90cd18c6-1092-4a58-936d-cea3f653e6a9
+                stepCounter: bf781e60-1e8e-4d0e-9daf-b69e21459e11
+            transform: ""
+      - appliedColumnTests: {}
+        columnReference:
+          columnCounter: 8a42bd24-5e33-48ba-89ab-1e147dd7e40b
+          stepCounter: 453a67b9-2ca7-4835-a626-bbbbfa6a69ec
+        config: {}
+        dataType: STRING
+        description: ""
+        name: n_comment
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: 388c601f-e276-47df-a03d-074cec4142e2
+                stepCounter: bf781e60-1e8e-4d0e-9daf-b69e21459e11
+            transform: ""
+    cteString: ""
+    enabledColumnTestIDs: []
+    sourceMapping:
+      - aliases: {}
+        customSQL:
+          customSQL: ""
+        dependencies:
+          - locationName: DESTINATION
+            nodeName: rename_node
+        join:
+          joinCondition: FROM {{ ref('DESTINATION', 'rename_node') }} `rename_node`
+        name: stg_rename_node
+        noLinkRefs: []
+  name: stg_rename_node
+  overrideSQL: false
+  schema: ""
+  sqlType: Stage
+  type: sql
+  version: 1
+type: Node
