@@ -14,7 +14,7 @@ operation:
       WHERE C_nationkey > 22
 
       {{ stage('merge some records') }}
-      MERGE INTO {{ ref('STG', 'stg_customer') }} AS target
+      MERGE INTO {{ ref('DESTINATION', 'stg_customer') }} AS target
       USING (
           SELECT * FROM VALUES 
               -- Insert: New customers (use numbers higher than existing)
