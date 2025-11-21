@@ -13,7 +13,7 @@
             {%- if not loop.last -%}, {% endif %}
         {% endfor %}
     )
-    {%- if desiredState.node.description | length > 0 %} COMMENT ON '{{ desiredState.node.description | escape }}'{% endif %}
+    {%- if desiredState.node.description | length > 0 %} COMMENT '{{ desiredState.node.description | escape }}'{% endif %}
     AS
     {% for source in desiredState.sources %}
         SELECT {% if desiredState.config.selectDistinct %} DISTINCT {% endif %}
@@ -43,7 +43,7 @@
             {%- if not loop.last -%}, {% endif %}
         {% endfor %}
     )
-    {%- if desiredState.node.description | length > 0 %} COMMENT = '{{ desiredState.node.description | escape }}'{% endif %}
+    {%- if desiredState.node.description | length > 0 %} COMMENT '{{ desiredState.node.description | escape }}'{% endif %}
     AS
     {% for source in desiredState.sources %}
         SELECT {% if desiredState.config.selectDistinct %} DISTINCT {% endif %}
