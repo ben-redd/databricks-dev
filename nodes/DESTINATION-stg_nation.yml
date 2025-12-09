@@ -4,7 +4,26 @@ name: stg_nation
 operation:
   config:
     insertStrategy: INSERT
-    postSQL: ""
+    postSQL: |-
+      -- Generate a slow query using cross joins on sequences
+      -- This creates a large cartesian product that takes time to process
+      WITH numbers1 AS (
+        SELECT id FROM RANGE(1, 10000)
+      ),
+      numbers2 AS (
+        SELECT id FROM RANGE(1, 5000)
+      ),
+      numbers3 AS (
+        SELECT id FROM RANGE(1, 1000)
+      )
+      SELECT 
+        COUNT(*) as total_rows,
+        SUM(n1.id + n2.id + n3.id) as sum_values,
+        AVG(n1.id * n2.id) as avg_product
+      FROM numbers1 n1
+      CROSS JOIN numbers2 n2
+      CROSS JOIN numbers3 n3
+      WHERE MOD(n1.id + n2.id + n3.id, 7) = 0;
     preSQL: ""
     testsEnabled: true
     truncateBefore: true
