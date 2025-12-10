@@ -1,16 +1,36 @@
 fileVersion: 1
 id: 9b49d896-12f9-4c58-9f69-ef97bc401f14
-name: stg_partsupp1
+name: stg_long_query
 operation:
   config:
     insertStrategy: INSERT
     postSQL: ""
-    preSQL: ""
+    preSQL: |-
+
+      -- Generate a slow query using cross joins on sequences
+      -- This creates a large cartesian product that takes time to process
+      WITH numbers1 AS (
+        SELECT id FROM RANGE(1, 10000)
+      ),
+      numbers2 AS (
+        SELECT id FROM RANGE(1, 5000)
+      ),
+      numbers3 AS (
+        SELECT id FROM RANGE(1, 1000)
+      )
+      SELECT 
+        COUNT(*) as total_rows,
+        SUM(n1.id + n2.id + n3.id) as sum_values,
+        AVG(n1.id * n2.id) as avg_product
+      FROM numbers1 n1
+      CROSS JOIN numbers2 n2
+      CROSS JOIN numbers3 n3
+      WHERE MOD(n1.id + n2.id + n3.id, 7) = 0;
     testsEnabled: true
     truncateBefore: true
   database: ""
   deployEnabled: true
-  description: ""
+  description: Slow query test node using cross joins to generate a large cartesian product for performance testing
   isMultisource: false
   locationName: DESTINATION
   materializationType: table
@@ -30,7 +50,7 @@ operation:
           - columnReferences:
               - columnCounter: 834f7bd7-9557-4d8f-8198-3f3d35e49a81
                 stepCounter: ec3ac39f-aa15-4f0d-8836-2ac4d5375d7a
-            transform: ""
+            transform: "`partsupp`.`ps_partkey`"
       - appliedColumnTests: {}
         columnReference:
           columnCounter: 3303b03d-0c93-4282-b082-1927c4536296
@@ -44,7 +64,7 @@ operation:
           - columnReferences:
               - columnCounter: 2b55848d-dc14-4172-8ab2-11c8688cc779
                 stepCounter: ec3ac39f-aa15-4f0d-8836-2ac4d5375d7a
-            transform: ""
+            transform: "`partsupp`.`ps_suppkey`"
       - appliedColumnTests: {}
         columnReference:
           columnCounter: c4440739-cdb1-4da4-a10a-f0960f2acd08
@@ -58,7 +78,7 @@ operation:
           - columnReferences:
               - columnCounter: 436ee50b-f95d-41ec-aedb-e0625dec0eb0
                 stepCounter: ec3ac39f-aa15-4f0d-8836-2ac4d5375d7a
-            transform: ""
+            transform: "`partsupp`.`ps_availqty`"
       - appliedColumnTests: {}
         columnReference:
           columnCounter: ac85f981-2d60-4754-b908-d28c3198186a
@@ -72,7 +92,7 @@ operation:
           - columnReferences:
               - columnCounter: 9fba48ed-dba4-4ac8-bdaa-1f200c2c40dc
                 stepCounter: ec3ac39f-aa15-4f0d-8836-2ac4d5375d7a
-            transform: ""
+            transform: "`partsupp`.`ps_supplycost`"
       - appliedColumnTests: {}
         columnReference:
           columnCounter: a7c2c112-f350-4cb4-8eed-4cf29c333b32
@@ -86,9 +106,12 @@ operation:
           - columnReferences:
               - columnCounter: 4d4480e3-e32b-4997-811b-416697476445
                 stepCounter: ec3ac39f-aa15-4f0d-8836-2ac4d5375d7a
-            transform: ""
+            transform: "`partsupp`.`ps_comment`"
     cteString: ""
+    description: ""
+    destinationName: ""
     enabledColumnTestIDs: []
+    materializationOption: ""
     sourceMapping:
       - aliases:
           partsupp: ec3ac39f-aa15-4f0d-8836-2ac4d5375d7a
@@ -99,9 +122,9 @@ operation:
             nodeName: partsupp
         join:
           joinCondition: FROM {{ ref('SOURCE', 'partsupp') }} `partsupp`
-        name: stg_partsupp1
+        name: stg_long_query
         noLinkRefs: []
-  name: stg_partsupp1
+  name: stg_long_query
   overrideSQL: false
   schema: ""
   sqlType: Stage
