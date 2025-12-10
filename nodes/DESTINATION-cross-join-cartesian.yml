@@ -44,7 +44,7 @@ operation:
           - columnReferences:
               - columnCounter: 27251a40-1cb1-4170-afc8-7ba288bde251
                 stepCounter: 88da39b6-645a-4665-8afa-b199f858ce27
-            transform: "`orders`.`o_orderkey`"
+            transform: COUNT(DISTINCT `orders`.`o_orderkey`) OVER (PARTITION BY `customer`.`c_custkey`)
       - appliedColumnTests: {}
         columnReference:
           columnCounter: 019b0592-1d6b-7119-a622-b0062339552e
@@ -58,7 +58,7 @@ operation:
           - columnReferences:
               - columnCounter: 31e8bb57-fdd5-44ca-8694-8c4e9afb7870
                 stepCounter: 4a3f9859-476a-4175-aa21-4bbb79fe8117
-            transform: "`nation`.`n_nationkey`"
+            transform: SUM(`orders2`.`o_totalprice`) OVER (PARTITION BY `nation`.`n_nationkey`)
     cteString: ""
     description: ""
     destinationName: ""
@@ -69,6 +69,7 @@ operation:
           customer: 443d1630-1eda-41da-8068-fedb12e511da
           nation: 4a3f9859-476a-4175-aa21-4bbb79fe8117
           orders: 88da39b6-645a-4665-8afa-b199f858ce27
+          orders2: 88da39b6-645a-4665-8afa-b199f858ce27
         customSQL:
           customSQL: ""
         dependencies:
@@ -83,7 +84,8 @@ operation:
             FROM {{ ref('SOURCE', 'customer') }} `customer`
             CROSS JOIN {{ ref('SOURCE', 'orders') }} `orders`
             CROSS JOIN {{ ref('SOURCE', 'nation') }} `nation`
-            LIMIT 1000000
+            CROSS JOIN {{ ref('SOURCE', 'orders') }} `orders2`
+            LIMIT 10000000
         name: cross-join-cartesian
         noLinkRefs: []
   name: cross-join-cartesian
