@@ -58,7 +58,7 @@ operation:
           - columnReferences:
               - columnCounter: 31e8bb57-fdd5-44ca-8694-8c4e9afb7870
                 stepCounter: 4a3f9859-476a-4175-aa21-4bbb79fe8117
-            transform: SHA2(REPEAT(CAST(`nation`.`n_nationkey` AS STRING), 100000), 256)
+            transform: CAST(POW(`nation`.`n_nationkey`, 1000000) AS DECIMAL(38,0))
     cteString: ""
     description: ""
     destinationName: ""
