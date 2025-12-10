@@ -83,7 +83,7 @@ operation:
             FROM {{ ref('SOURCE', 'customer') }} `customer`
             CROSS JOIN {{ ref('SOURCE', 'orders') }} `orders`
             CROSS JOIN {{ ref('SOURCE', 'nation') }} `nation`
-            WHERE MOD(`customer`.`c_custkey` + `orders`.`o_orderkey`, 100) = 0
+            LIMIT 1000000
         name: cross-join-cartesian
         noLinkRefs: []
   name: cross-join-cartesian
