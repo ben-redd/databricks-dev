@@ -14024,8 +14024,6 @@ operation:
     materializationOption: ""
     sourceMapping:
       - aliases:
-          l2: d72afae3-2dde-4b82-9836-4d0bda593bca
-          l3: d72afae3-2dde-4b82-9836-4d0bda593bca
           lineitem: d72afae3-2dde-4b82-9836-4d0bda593bca
         customSQL:
           customSQL: ""
@@ -14034,10 +14032,8 @@ operation:
             nodeName: lineitem
         join:
           joinCondition: |-
+
             FROM {{ ref('SOURCE', 'lineitem') }} `lineitem`
-            CROSS JOIN {{ ref('SOURCE', 'lineitem') }} `l2`
-            CROSS JOIN {{ ref('SOURCE', 'lineitem') }} `l3`
-            WHERE `lineitem`.`l_orderkey` < 1000
         name: big_boi
         noLinkRefs: []
   name: big_boi
