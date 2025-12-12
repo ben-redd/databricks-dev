@@ -1,0 +1,197 @@
+fileVersion: 1
+id: 37a104d5-348e-479e-95d7-d68c0770b2a8
+name: int_customer_enhanced
+operation:
+  config:
+    insertStrategy: INSERT
+    postSQL: ""
+    preSQL: ""
+    testsEnabled: true
+    truncateBefore: true
+  database: ""
+  deployEnabled: true
+  description: Intermediate customer data with derived fields and business logic applied
+  isMultisource: false
+  locationName: DESTINATION
+  materializationType: table
+  metadata:
+    appliedNodeTests: []
+    columns:
+      - appliedColumnTests: {}
+        columnReference:
+          columnCounter: 019b1375-c107-7380-bdd8-5375169f9719
+          stepCounter: 37a104d5-348e-479e-95d7-d68c0770b2a8
+        config: {}
+        dataType: NUMBER
+        description: ""
+        name: customer_key
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: fbe0423e-2353-4d4b-85f0-6c2025ec850e
+                stepCounter: e2d5c8e4-fff1-4915-bb94-011b935a13fb
+            transform: "`stg_customer`.`customer_key`"
+      - appliedColumnTests: {}
+        columnReference:
+          columnCounter: 019b1375-c107-7380-bdd8-550dc856807e
+          stepCounter: 37a104d5-348e-479e-95d7-d68c0770b2a8
+        config: {}
+        dataType: VARCHAR
+        description: ""
+        name: customer_name
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: c2449166-ac53-4e0c-b446-359909dccfb5
+                stepCounter: e2d5c8e4-fff1-4915-bb94-011b935a13fb
+            transform: "`stg_customer`.`customer_name`"
+      - appliedColumnTests: {}
+        columnReference:
+          columnCounter: 019b1375-c107-7380-bdd8-5a2b5b064524
+          stepCounter: 37a104d5-348e-479e-95d7-d68c0770b2a8
+        config: {}
+        dataType: VARCHAR
+        description: ""
+        name: address
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: b0ef1cf9-c47d-4a1c-a6ae-36014e2e408c
+                stepCounter: e2d5c8e4-fff1-4915-bb94-011b935a13fb
+            transform: "`stg_customer`.`address`"
+      - appliedColumnTests: {}
+        columnReference:
+          columnCounter: 019b1375-c107-7380-bdd8-5e24975ad019
+          stepCounter: 37a104d5-348e-479e-95d7-d68c0770b2a8
+        config: {}
+        dataType: NUMBER
+        description: ""
+        name: nation_key
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: 6c755d11-c36b-458f-bb34-7563232ac366
+                stepCounter: e2d5c8e4-fff1-4915-bb94-011b935a13fb
+            transform: "`stg_customer`.`nation_key`"
+      - appliedColumnTests: {}
+        columnReference:
+          columnCounter: 019b1375-c107-7380-bdd8-63ba6b836eb2
+          stepCounter: 37a104d5-348e-479e-95d7-d68c0770b2a8
+        config: {}
+        dataType: VARCHAR
+        description: ""
+        name: phone
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: 6a2f752a-5d9f-4aa3-a4f3-d3104fc65d1b
+                stepCounter: e2d5c8e4-fff1-4915-bb94-011b935a13fb
+            transform: "`stg_customer`.`phone`"
+      - appliedColumnTests: {}
+        columnReference:
+          columnCounter: 019b1375-c107-7380-bdd8-6618967e3ac3
+          stepCounter: 37a104d5-348e-479e-95d7-d68c0770b2a8
+        config: {}
+        dataType: VARCHAR
+        description: ""
+        name: phone_country_code
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: 6a2f752a-5d9f-4aa3-a4f3-d3104fc65d1b
+                stepCounter: e2d5c8e4-fff1-4915-bb94-011b935a13fb
+            transform: split(`stg_customer`.`phone`, '-')[0]
+      - appliedColumnTests: {}
+        columnReference:
+          columnCounter: 019b1375-c107-7380-bdd8-68d89b6d9bd4
+          stepCounter: 37a104d5-348e-479e-95d7-d68c0770b2a8
+        config: {}
+        dataType: NUMBER
+        description: ""
+        name: account_balance
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: afe4eacd-6964-46fc-a98c-602eed2e0c85
+                stepCounter: e2d5c8e4-fff1-4915-bb94-011b935a13fb
+            transform: "`stg_customer`.`account_balance`"
+      - appliedColumnTests: {}
+        columnReference:
+          columnCounter: 019b1375-c107-7380-bdd8-6dae1a4489b5
+          stepCounter: 37a104d5-348e-479e-95d7-d68c0770b2a8
+        config: {}
+        dataType: VARCHAR
+        description: ""
+        name: balance_category
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: afe4eacd-6964-46fc-a98c-602eed2e0c85
+                stepCounter: e2d5c8e4-fff1-4915-bb94-011b935a13fb
+            transform: case when `stg_customer`.`account_balance` < 0 then 'Negative' when `stg_customer`.`account_balance` = 0 then 'Zero' when `stg_customer`.`account_balance` < 1000 then 'Low' when `stg_customer`.`account_balance` < 5000 then 'Medium' else 'High' end
+      - appliedColumnTests: {}
+        columnReference:
+          columnCounter: 019b1375-c107-7380-bdd8-7141a2f9ea73
+          stepCounter: 37a104d5-348e-479e-95d7-d68c0770b2a8
+        config: {}
+        dataType: VARCHAR
+        description: ""
+        name: market_segment
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: 8acbfe08-fca2-4480-9169-8097905ba327
+                stepCounter: e2d5c8e4-fff1-4915-bb94-011b935a13fb
+            transform: "`stg_customer`.`market_segment`"
+      - appliedColumnTests: {}
+        columnReference:
+          columnCounter: 019b1375-c107-7380-bdd8-772146e5da93
+          stepCounter: 37a104d5-348e-479e-95d7-d68c0770b2a8
+        config: {}
+        dataType: BOOLEAN
+        description: ""
+        name: is_automotive
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: 8acbfe08-fca2-4480-9169-8097905ba327
+                stepCounter: e2d5c8e4-fff1-4915-bb94-011b935a13fb
+            transform: "`stg_customer`.`market_segment` = 'AUTOMOBILE'"
+      - appliedColumnTests: {}
+        columnReference:
+          columnCounter: 019b1375-c107-7380-bdd8-7a2116fdbebd
+          stepCounter: 37a104d5-348e-479e-95d7-d68c0770b2a8
+        config: {}
+        dataType: VARCHAR
+        description: ""
+        name: comment
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: 481be424-5b5b-4081-91ef-de1f1673b477
+                stepCounter: e2d5c8e4-fff1-4915-bb94-011b935a13fb
+            transform: "`stg_customer`.`comment`"
+    cteString: ""
+    description: ""
+    destinationName: ""
+    enabledColumnTestIDs: []
+    materializationOption: ""
+    sourceMapping:
+      - aliases:
+          stg_customer: e2d5c8e4-fff1-4915-bb94-011b935a13fb
+        customSQL:
+          customSQL: ""
+        dependencies:
+          - locationName: DESTINATION
+            nodeName: stg_customer
+        join:
+          joinCondition: FROM {{ ref('DESTINATION', 'stg_customer') }} `stg_customer`
+        name: stg_node
+        noLinkRefs: []
+  name: int_customer_enhanced
+  overrideSQL: false
+  schema: ""
+  sqlType: Stage
+  type: sql
+  version: 1
+type: Node
