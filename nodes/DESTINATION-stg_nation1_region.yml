@@ -30,7 +30,7 @@ operation:
           - columnReferences:
               - columnCounter: a5130b78-57c7-4d5b-8953-cc24e5d83f70
                 stepCounter: d62e4a14-383f-4d51-93fa-a963eafebcc7
-            transform: ""
+            transform: "`stg_nation1`.`n_nationkey`"
       - appliedColumnTests: {}
         columnReference:
           columnCounter: c1875f4d-37dd-4fe8-b0b8-a0a9dafac0d5
@@ -44,7 +44,7 @@ operation:
           - columnReferences:
               - columnCounter: 4637078d-5aba-4950-a49d-3c9391855202
                 stepCounter: d62e4a14-383f-4d51-93fa-a963eafebcc7
-            transform: ""
+            transform: "`stg_nation1`.`n_name`"
       - appliedColumnTests: {}
         columnReference:
           columnCounter: 0d090f64-7152-49e7-af92-cae57e32a8b3
@@ -58,7 +58,7 @@ operation:
           - columnReferences:
               - columnCounter: c8fa77ac-3d14-40bc-9fcd-4ac74987b4a3
                 stepCounter: d62e4a14-383f-4d51-93fa-a963eafebcc7
-            transform: ""
+            transform: "`stg_nation1`.`n_regionkey`"
       - appliedColumnTests: {}
         columnReference:
           columnCounter: 81262087-0cb4-44a1-b5ae-5bba2efd175d
@@ -72,7 +72,7 @@ operation:
           - columnReferences:
               - columnCounter: 9c5aebf0-3cad-4ec4-b271-aa9352807234
                 stepCounter: d62e4a14-383f-4d51-93fa-a963eafebcc7
-            transform: ""
+            transform: "`stg_nation1`.`n_comment`"
       - appliedColumnTests: {}
         columnReference:
           columnCounter: 3cfb1df2-a1b1-487e-83c8-9bfe228d1d91
@@ -86,7 +86,7 @@ operation:
           - columnReferences:
               - columnCounter: db276977-18fc-4f07-ba91-52685502002a
                 stepCounter: f63b2f02-a636-47e9-8047-449de3617e38
-            transform: ""
+            transform: "`stg_region`.`r_regionkey`"
       - appliedColumnTests: {}
         columnReference:
           columnCounter: 7942f3cd-e484-485a-aacb-177d1ad9b274
@@ -100,7 +100,7 @@ operation:
           - columnReferences:
               - columnCounter: 84d650ba-91e4-44b8-bc10-a94f5ee75bf2
                 stepCounter: f63b2f02-a636-47e9-8047-449de3617e38
-            transform: ""
+            transform: "`stg_region`.`r_name`"
       - appliedColumnTests: {}
         columnReference:
           columnCounter: 2053f2c4-e513-47f4-afc1-c934652caf79
@@ -112,27 +112,30 @@ operation:
         nullable: true
         sourceColumnReferences:
           - columnReferences:
-              - columnCounter: 6100805e-19cc-4060-98ae-4bd6edd98ae2
-                stepCounter: f63b2f02-a636-47e9-8047-449de3617e38
-            transform: UPPER(`STG_nation1`.`n_name`)
+              - columnCounter: 4637078d-5aba-4950-a49d-3c9391855202
+                stepCounter: d62e4a14-383f-4d51-93fa-a963eafebcc7
+            transform: UPPER(`stg_nation1`.`n_name`)
     cteString: ""
+    description: ""
+    destinationName: ""
     enabledColumnTestIDs: []
+    materializationOption: ""
     sourceMapping:
       - aliases:
-          STG_nation1: d62e4a14-383f-4d51-93fa-a963eafebcc7
-          STG_region: f63b2f02-a636-47e9-8047-449de3617e38
+          stg_nation1: d62e4a14-383f-4d51-93fa-a963eafebcc7
+          stg_region: f63b2f02-a636-47e9-8047-449de3617e38
         customSQL:
           customSQL: ""
         dependencies:
           - locationName: DESTINATION
-            nodeName: STG_nation1
+            nodeName: stg_nation1
           - locationName: DESTINATION
-            nodeName: STG_region
+            nodeName: stg_region
         join:
           joinCondition: |-
-            FROM {{ ref('DESTINATION', 'STG_nation1') }} `STG_nation1`
-            INNER JOIN {{ ref('DESTINATION', 'STG_region') }} `STG_region`
-            ON `STG_nation1`.`n_regionkey` = `STG_region`.`r_regionkey`
+            FROM {{ ref('DESTINATION', 'stg_nation1') }} `stg_nation1`
+            INNER JOIN {{ ref('DESTINATION', 'stg_region') }} `stg_region`
+            ON `stg_nation1`.`n_regionkey` = `stg_region`.`r_regionkey`
         name: stg_nation1_region
         noLinkRefs: []
   name: stg_nation1_region

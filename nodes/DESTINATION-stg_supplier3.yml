@@ -1,6 +1,6 @@
 fileVersion: 1
 id: a5a2c161-4738-4eef-8823-e1ce43dc21fd
-name: STG_supplier3
+name: stg_supplier3
 operation:
   config:
     insertStrategy: INSERT
@@ -30,7 +30,7 @@ operation:
           - columnReferences:
               - columnCounter: 63d38f2e-99b1-4c70-a2e2-0c4f9e646f74
                 stepCounter: 4047584c-67a4-43f3-88ad-09319b921af6
-            transform: ""
+            transform: "`stg_supplier2`.`s_suppkey`"
       - appliedColumnTests: {}
         columnReference:
           columnCounter: ab442378-ff21-4b39-9714-51a1882cc88c
@@ -44,7 +44,7 @@ operation:
           - columnReferences:
               - columnCounter: c42d8aa3-5c35-44f6-9b18-a52aaf6ab51e
                 stepCounter: 4047584c-67a4-43f3-88ad-09319b921af6
-            transform: ""
+            transform: "`stg_supplier2`.`s_name`"
       - appliedColumnTests: {}
         columnReference:
           columnCounter: cbc59284-6bba-4e2f-95e4-f6172f0cda19
@@ -58,7 +58,7 @@ operation:
           - columnReferences:
               - columnCounter: 7c5d4704-978b-4b9b-a389-a58937108b5c
                 stepCounter: 4047584c-67a4-43f3-88ad-09319b921af6
-            transform: ""
+            transform: "`stg_supplier2`.`s_address`"
       - appliedColumnTests: {}
         columnReference:
           columnCounter: e93fadce-219d-4e16-9add-b09fddefca7a
@@ -72,7 +72,7 @@ operation:
           - columnReferences:
               - columnCounter: d2f74161-7de9-4da8-a69d-362e14be9954
                 stepCounter: 4047584c-67a4-43f3-88ad-09319b921af6
-            transform: ""
+            transform: "`stg_supplier2`.`s_nationkey`"
       - appliedColumnTests: {}
         columnReference:
           columnCounter: f0936cd0-3983-4c82-b6d7-9967f0f97bb7
@@ -86,7 +86,7 @@ operation:
           - columnReferences:
               - columnCounter: 99545d9b-d2c0-4cb0-a837-deb7ea115f7f
                 stepCounter: 4047584c-67a4-43f3-88ad-09319b921af6
-            transform: ""
+            transform: "`stg_supplier2`.`s_phone`"
       - appliedColumnTests: {}
         columnReference:
           columnCounter: 449fa672-2bae-4331-a35f-3bf01ec2ba3f
@@ -100,21 +100,25 @@ operation:
           - columnReferences:
               - columnCounter: 1e402c8d-1e6f-4733-ac25-997fbdbfa6ac
                 stepCounter: 4047584c-67a4-43f3-88ad-09319b921af6
-            transform: ""
+            transform: "`stg_supplier2`.`s_acctbal`"
     cteString: ""
+    description: ""
+    destinationName: ""
     enabledColumnTestIDs: []
+    materializationOption: ""
     sourceMapping:
-      - aliases: {}
+      - aliases:
+          stg_supplier2: 4047584c-67a4-43f3-88ad-09319b921af6
         customSQL:
           customSQL: ""
         dependencies:
           - locationName: DESTINATION
-            nodeName: STG_supplier2
+            nodeName: stg_supplier2
         join:
-          joinCondition: FROM {{ ref('DESTINATION', 'STG_supplier2') }} `STG_supplier2`
+          joinCondition: FROM {{ ref('DESTINATION', 'stg_supplier2') }} `stg_supplier2`
         name: STG_supplier3
         noLinkRefs: []
-  name: STG_supplier3
+  name: stg_supplier3
   overrideSQL: false
   schema: ""
   sqlType: Stage
