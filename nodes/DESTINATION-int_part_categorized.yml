@@ -1,0 +1,267 @@
+fileVersion: 1
+id: d5cd99f1-744c-479f-bd3a-a6c3787bf709
+name: int_part_categorized
+operation:
+  config:
+    insertStrategy: INSERT
+    postSQL: ""
+    preSQL: ""
+    testsEnabled: true
+    truncateBefore: true
+  database: ""
+  deployEnabled: true
+  description: Enhanced part data with derived categorizations and pricing tiers
+  isMultisource: false
+  locationName: DESTINATION
+  materializationType: table
+  metadata:
+    appliedNodeTests: []
+    columns:
+      - appliedColumnTests: {}
+        columnReference:
+          columnCounter: 019b137d-ff7e-74bc-a66a-f1ccfcb87b67
+          stepCounter: d5cd99f1-744c-479f-bd3a-a6c3787bf709
+        config: {}
+        dataType: NUMBER
+        description: ""
+        name: part_key
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: 019b137d-d8d0-774e-b793-409e16721055
+                stepCounter: 03476eaa-da57-4418-8076-b6b1026b2d0e
+            transform: "`stg_part`.`part_key`"
+      - appliedColumnTests: {}
+        columnReference:
+          columnCounter: 019b137d-ff7e-74bc-a66a-f5428ecff8c6
+          stepCounter: d5cd99f1-744c-479f-bd3a-a6c3787bf709
+        config: {}
+        dataType: VARCHAR
+        description: ""
+        name: part_name
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: 019b137d-d8d0-774e-b793-45042156eb52
+                stepCounter: 03476eaa-da57-4418-8076-b6b1026b2d0e
+            transform: "`stg_part`.`part_name`"
+      - appliedColumnTests: {}
+        columnReference:
+          columnCounter: 019b137d-ff7e-74bc-a66a-fa1f04e32251
+          stepCounter: d5cd99f1-744c-479f-bd3a-a6c3787bf709
+        config: {}
+        dataType: VARCHAR
+        description: ""
+        name: manufacturer
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: 019b137d-d8d0-774e-b793-4ad7d57f8ae8
+                stepCounter: 03476eaa-da57-4418-8076-b6b1026b2d0e
+            transform: "`stg_part`.`manufacturer`"
+      - appliedColumnTests: {}
+        columnReference:
+          columnCounter: 019b137d-ff7e-74bc-a66a-ffb0db72af4b
+          stepCounter: d5cd99f1-744c-479f-bd3a-a6c3787bf709
+        config: {}
+        dataType: NUMBER
+        description: ""
+        name: manufacturer_number
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: 019b137d-d8d0-774e-b793-4ad7d57f8ae8
+                stepCounter: 03476eaa-da57-4418-8076-b6b1026b2d0e
+            transform: cast(regexp_extract(`stg_part`.`manufacturer`, 'Manufacturer#(\\d+)', 1) as int)
+      - appliedColumnTests: {}
+        columnReference:
+          columnCounter: 019b137d-ff7e-74bc-a66b-02531efdc6e0
+          stepCounter: d5cd99f1-744c-479f-bd3a-a6c3787bf709
+        config: {}
+        dataType: VARCHAR
+        description: ""
+        name: brand
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: 019b137d-d8d0-774e-b793-4ff596acd91a
+                stepCounter: 03476eaa-da57-4418-8076-b6b1026b2d0e
+            transform: "`stg_part`.`brand`"
+      - appliedColumnTests: {}
+        columnReference:
+          columnCounter: 019b137d-ff7e-74bc-a66b-075bd68ed568
+          stepCounter: d5cd99f1-744c-479f-bd3a-a6c3787bf709
+        config: {}
+        dataType: NUMBER
+        description: ""
+        name: brand_number
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: 019b137d-d8d0-774e-b793-4ff596acd91a
+                stepCounter: 03476eaa-da57-4418-8076-b6b1026b2d0e
+            transform: cast(regexp_extract(`stg_part`.`brand`, 'Brand#(\\d+)', 1) as int)
+      - appliedColumnTests: {}
+        columnReference:
+          columnCounter: 019b137d-ff7e-74bc-a66b-0a7fcf1e202e
+          stepCounter: d5cd99f1-744c-479f-bd3a-a6c3787bf709
+        config: {}
+        dataType: VARCHAR
+        description: ""
+        name: part_type
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: 019b137d-d8d0-774e-b793-51794b7652a0
+                stepCounter: 03476eaa-da57-4418-8076-b6b1026b2d0e
+            transform: "`stg_part`.`part_type`"
+      - appliedColumnTests: {}
+        columnReference:
+          columnCounter: 019b137d-ff7e-74bc-a66b-0fc5c322d381
+          stepCounter: d5cd99f1-744c-479f-bd3a-a6c3787bf709
+        config: {}
+        dataType: VARCHAR
+        description: ""
+        name: type_category
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: 019b137d-d8d0-774e-b793-51794b7652a0
+                stepCounter: 03476eaa-da57-4418-8076-b6b1026b2d0e
+            transform: split(`stg_part`.`part_type`, ' ')[0]
+      - appliedColumnTests: {}
+        columnReference:
+          columnCounter: 019b137d-ff7e-74bc-a66b-121345129658
+          stepCounter: d5cd99f1-744c-479f-bd3a-a6c3787bf709
+        config: {}
+        dataType: NUMBER
+        description: ""
+        name: size
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: 019b137d-d8d0-774e-b793-5427f81fc577
+                stepCounter: 03476eaa-da57-4418-8076-b6b1026b2d0e
+            transform: "`stg_part`.`size`"
+      - appliedColumnTests: {}
+        columnReference:
+          columnCounter: 019b137d-ff7e-74bc-a66b-1709bfa1e32d
+          stepCounter: d5cd99f1-744c-479f-bd3a-a6c3787bf709
+        config: {}
+        dataType: VARCHAR
+        description: ""
+        name: size_category
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: 019b137d-d8d0-774e-b793-5427f81fc577
+                stepCounter: 03476eaa-da57-4418-8076-b6b1026b2d0e
+            transform: case when `stg_part`.`size` < 10 then 'Small' when `stg_part`.`size` < 30 then 'Medium' when `stg_part`.`size` < 45 then 'Large' else 'Extra Large' end
+      - appliedColumnTests: {}
+        columnReference:
+          columnCounter: 019b137d-ff7e-74bc-a66b-18aabb9a5204
+          stepCounter: d5cd99f1-744c-479f-bd3a-a6c3787bf709
+        config: {}
+        dataType: VARCHAR
+        description: ""
+        name: container
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: 019b137d-d8d0-774e-b793-5bda5a212ede
+                stepCounter: 03476eaa-da57-4418-8076-b6b1026b2d0e
+            transform: "`stg_part`.`container`"
+      - appliedColumnTests: {}
+        columnReference:
+          columnCounter: 019b137d-ff7e-74bc-a66b-1cd925db6f1f
+          stepCounter: d5cd99f1-744c-479f-bd3a-a6c3787bf709
+        config: {}
+        dataType: VARCHAR
+        description: ""
+        name: container_type
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: 019b137d-d8d0-774e-b793-5bda5a212ede
+                stepCounter: 03476eaa-da57-4418-8076-b6b1026b2d0e
+            transform: split(`stg_part`.`container`, ' ')[1]
+      - appliedColumnTests: {}
+        columnReference:
+          columnCounter: 019b137d-ff7e-74bc-a66b-23f31f7bcb73
+          stepCounter: d5cd99f1-744c-479f-bd3a-a6c3787bf709
+        config: {}
+        dataType: NUMBER
+        description: ""
+        name: retail_price
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: 019b137d-d8d0-774e-b793-5c701af436fe
+                stepCounter: 03476eaa-da57-4418-8076-b6b1026b2d0e
+            transform: "`stg_part`.`retail_price`"
+      - appliedColumnTests: {}
+        columnReference:
+          columnCounter: 019b137d-ff7e-74bc-a66b-24a77e861cc6
+          stepCounter: d5cd99f1-744c-479f-bd3a-a6c3787bf709
+        config: {}
+        dataType: VARCHAR
+        description: ""
+        name: price_tier
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: 019b137d-d8d0-774e-b793-5c701af436fe
+                stepCounter: 03476eaa-da57-4418-8076-b6b1026b2d0e
+            transform: case when `stg_part`.`retail_price` < 1000 then 'Budget' when `stg_part`.`retail_price` < 1500 then 'Standard' when `stg_part`.`retail_price` < 2000 then 'Premium' else 'Luxury' end
+      - appliedColumnTests: {}
+        columnReference:
+          columnCounter: 019b137d-ff7e-74bc-a66b-2a441f629d36
+          stepCounter: d5cd99f1-744c-479f-bd3a-a6c3787bf709
+        config: {}
+        dataType: BOOLEAN
+        description: ""
+        name: is_high_value
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: 019b137d-d8d0-774e-b793-5c701af436fe
+                stepCounter: 03476eaa-da57-4418-8076-b6b1026b2d0e
+            transform: "`stg_part`.`retail_price` >= 2000"
+      - appliedColumnTests: {}
+        columnReference:
+          columnCounter: 019b137d-ff7e-74bc-a66b-2df09d29fa94
+          stepCounter: d5cd99f1-744c-479f-bd3a-a6c3787bf709
+        config: {}
+        dataType: VARCHAR
+        description: ""
+        name: comment
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: 019b137d-d8d0-774e-b793-63d5c8f2dce2
+                stepCounter: 03476eaa-da57-4418-8076-b6b1026b2d0e
+            transform: "`stg_part`.`comment`"
+    cteString: ""
+    description: ""
+    destinationName: ""
+    enabledColumnTestIDs: []
+    materializationOption: ""
+    sourceMapping:
+      - aliases:
+          stg_part: 03476eaa-da57-4418-8076-b6b1026b2d0e
+        customSQL:
+          customSQL: ""
+        dependencies:
+          - locationName: DESTINATION
+            nodeName: stg_part
+        join:
+          joinCondition: FROM {{ ref('DESTINATION', 'stg_part') }} `stg_part`
+        name: stg_node
+        noLinkRefs: []
+  name: int_part_categorized
+  overrideSQL: false
+  schema: ""
+  sqlType: Stage
+  type: sql
+  version: 1
+type: Node

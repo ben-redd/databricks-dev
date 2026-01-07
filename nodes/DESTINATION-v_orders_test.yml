@@ -1,0 +1,117 @@
+fileVersion: 1
+id: f5ac588f-3f33-4fb8-b9d3-9d0949a80003
+name: v_orders_test
+operation:
+  config:
+    groupByAll: false
+    insertStrategy: UNION
+    selectDistinct: false
+  database: ""
+  deployEnabled: true
+  description: Test view combining the two test staging nodes
+  isMultisource: false
+  locationName: DESTINATION
+  materializationType: view
+  metadata:
+    appliedNodeTests: []
+    columns:
+      - appliedColumnTests: {}
+        columnReference:
+          columnCounter: 019b1425-ac8b-723d-aa77-db01d00204f0
+          stepCounter: f5ac588f-3f33-4fb8-b9d3-9d0949a80003
+        config: {}
+        dataType: NUMBER
+        description: ""
+        name: o_orderkey
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences: []
+            transform: "`test1`.`o_orderkey`"
+      - appliedColumnTests: {}
+        columnReference:
+          columnCounter: 019b1425-ac8b-723d-aa77-df4c0c46bc19
+          stepCounter: f5ac588f-3f33-4fb8-b9d3-9d0949a80003
+        config: {}
+        dataType: NUMBER
+        description: ""
+        name: o_custkey
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences: []
+            transform: "`test1`.`o_custkey`"
+      - appliedColumnTests: {}
+        columnReference:
+          columnCounter: 019b1425-ac8b-723d-aa77-e0263d59c2a5
+          stepCounter: f5ac588f-3f33-4fb8-b9d3-9d0949a80003
+        config: {}
+        dataType: VARCHAR
+        description: ""
+        name: o_orderstatus
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences: []
+            transform: "`test1`.`o_orderstatus`"
+      - appliedColumnTests: {}
+        columnReference:
+          columnCounter: 019b1425-ac8c-7438-9649-3ced5eea4ba3
+          stepCounter: f5ac588f-3f33-4fb8-b9d3-9d0949a80003
+        config: {}
+        dataType: NUMBER
+        description: ""
+        name: o_totalprice
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences: []
+            transform: "`test1`.`o_totalprice`"
+      - appliedColumnTests: {}
+        columnReference:
+          columnCounter: 019b1425-ac8c-7438-9649-4281429d4534
+          stepCounter: f5ac588f-3f33-4fb8-b9d3-9d0949a80003
+        config: {}
+        dataType: BOOLEAN
+        description: ""
+        name: test_flag
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences: []
+            transform: "`test1`.`test_flag`"
+      - appliedColumnTests: {}
+        columnReference:
+          columnCounter: 019b1425-ac8c-7438-9649-44738f2684bb
+          stepCounter: f5ac588f-3f33-4fb8-b9d3-9d0949a80003
+        config: {}
+        dataType: VARCHAR
+        description: ""
+        name: price_category
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences: []
+            transform: "`test2`.`price_category`"
+    cteString: ""
+    description: ""
+    destinationName: ""
+    enabledColumnTestIDs: []
+    materializationOption: ""
+    sourceMapping:
+      - aliases: {}
+        customSQL:
+          customSQL: ""
+        dependencies:
+          - locationName: DESTINATION
+            nodeName: stg_orders_test1
+          - locationName: DESTINATION
+            nodeName: stg_orders_test2
+        join:
+          joinCondition: |-
+            FROM {{ ref('DESTINATION', 'stg_orders_test1') }} `test1`
+            LEFT JOIN {{ ref('DESTINATION', 'stg_orders_test2') }} `test2`
+              ON `test1`.`o_orderkey` = `test2`.`o_orderkey`
+        name: v_node
+        noLinkRefs: []
+  name: v_orders_test
+  overrideSQL: false
+  schema: ""
+  sqlType: View
+  type: sql
+  version: 1
+type: Node
