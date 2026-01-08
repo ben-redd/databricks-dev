@@ -4,48 +4,7 @@ name: stg_customer
 operation:
   config:
     insertStrategy: INSERT
-    postSQL: |-
-      UPDATE {{this}} 
-      SET C_comment = 'foo'
-      WHERE C_nationkey < 2
-
-      {{ stage('delete a few records') }}
-      DELETE FROM {{this}}
-      WHERE C_nationkey > 22
-
-      {{ stage('merge some records') }}
-      MERGE INTO {{ ref('DESTINATION', 'stg_customer') }} AS target
-      USING (
-          SELECT * FROM VALUES 
-              -- Insert: New customers (use numbers higher than existing)
-              (500001, 'INSERT_CUSTOMER_1', 'New Address 1', 1, '555-0001', 1000.00, 'BUILDING', 'Inserted customer 1'),
-              (500002, 'INSERT_CUSTOMER_2', 'New Address 2', 0, '555-0002', 2000.00, 'AUTOMOBILE', 'Inserted customer 2'),
-              (500003, 'INSERT_CUSTOMER_3', 'New Address 3', 1, '555-0003', 3000.00, 'FURNITURE', 'Inserted customer 3'),
-              -- Update: Use your existing customer IDs
-              (412463, 'UPDATED_Customer#00412463', 'UPDATED_ADDRESS', 1, '555-UPDATED', 9999.99, 'MACHINERY', 'Updated customer'),
-              (412465, 'UPDATED_Customer#00412465', 'UPDATED_ADDRESS_2', 0, '555-UPDATED', 8888.88, 'HOUSEHOLD', 'Updated customer 2'),
-              -- Delete: Use your existing customer IDs  
-              (412487, 'TO_DELETE_Customer#00412487', 'Delete Me', 1, '555-DELETE', 0.00, 'BUILDING', 'Will be deleted'),
-              (412510, 'TO_DELETE_Customer#00412510', 'Delete Me Too', 1, '555-DELETE', 0.00, 'BUILDING', 'Will be deleted')
-          AS t(c_custkey, c_name, c_address, c_nationkey, c_phone, c_acctbal, c_mktsegment, c_comment)
-      ) AS source
-      ON target.c_custkey = source.c_custkey
-
-      WHEN MATCHED AND source.c_name LIKE 'UPDATED_%' THEN
-          UPDATE SET 
-              c_name = source.c_name,
-              c_address = source.c_address,
-              c_phone = source.c_phone,
-              c_acctbal = source.c_acctbal,
-              c_mktsegment = source.c_mktsegment,
-              c_comment = source.c_comment
-
-      WHEN MATCHED AND source.c_name LIKE 'TO_DELETE_%' THEN
-          DELETE
-
-      WHEN NOT MATCHED THEN
-          INSERT (c_custkey, c_name, c_address, c_nationkey, c_phone, c_acctbal, c_mktsegment, c_comment)
-          VALUES (source.c_custkey, source.c_name, source.c_address, source.c_nationkey, source.c_phone, source.c_acctbal, source.c_mktsegment, source.c_comment)
+    postSQL: ""
     preSQL: ""
     testsEnabled: true
     truncateBefore: true
