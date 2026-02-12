@@ -1,0 +1,80 @@
+fileVersion: 1
+id: 33b2a7d6-24c7-4bce-af05-daf1448cb447
+name: stg_name_update_udn
+operation:
+  config:
+    insertStrategy: INSERT
+    postSQL: ""
+    preSQL: ""
+    testsEnabled: true
+    truncateBefore: true
+  database: ""
+  deployEnabled: true
+  description: test description with simultaneous name change
+  isMultisource: false
+  locationName: DESTINATION
+  materializationType: table
+  metadata:
+    appliedNodeTests: []
+    columns:
+      - appliedColumnTests: {}
+        columnReference:
+          columnCounter: c92f4d81-f43c-45b0-a139-da48f2ec29dd
+          stepCounter: 33b2a7d6-24c7-4bce-af05-daf1448cb447
+        config: {}
+        dataType: LONG
+        description: ""
+        name: r_regionkey
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: 7e6e766b-4af2-49fb-8649-16f8225861a5
+                stepCounter: 4277fe0e-49fd-4545-ac51-5b6a99b892b1
+            transform: ""
+      - appliedColumnTests: {}
+        columnReference:
+          columnCounter: e9edea22-656e-4343-b4e8-b64304496ef2
+          stepCounter: 33b2a7d6-24c7-4bce-af05-daf1448cb447
+        config: {}
+        dataType: STRING
+        description: test2
+        name: r_name
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: 1de15bf1-92fb-4108-8597-e69c7f095aaf
+                stepCounter: 4277fe0e-49fd-4545-ac51-5b6a99b892b1
+            transform: ""
+      - appliedColumnTests: {}
+        columnReference:
+          columnCounter: eeedff2f-acae-435a-b702-8462fc50a454
+          stepCounter: 33b2a7d6-24c7-4bce-af05-daf1448cb447
+        config: {}
+        dataType: STRING
+        description: test3
+        name: r_comment
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: 2c3d44a4-adfd-4e76-9f0a-3afbf849d603
+                stepCounter: 4277fe0e-49fd-4545-ac51-5b6a99b892b1
+            transform: ""
+    cteString: ""
+    enabledColumnTestIDs: []
+    sourceMapping:
+      - aliases:
+          name_update_udn: 4277fe0e-49fd-4545-ac51-5b6a99b892b1
+        dependencies:
+          - locationName: DESTINATION
+            nodeName: name_update_udn
+        join:
+          joinCondition: FROM {{ ref('DESTINATION', 'name_update_udn') }} `name_update_udn`
+        name: stg_name_update_udn
+        noLinkRefs: []
+  name: stg_name_update_udn
+  overrideSQL: false
+  schema: ""
+  sqlType: Stage
+  type: sql
+  version: 1
+type: Node

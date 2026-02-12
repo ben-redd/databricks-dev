@@ -1,0 +1,66 @@
+fileVersion: 1
+id: 886d09e4-85d0-4b8b-a1f5-839ed2453ee7
+name: stg_daily_14_total_short9
+operation:
+  config:
+    insertStrategy: INSERT
+    postSQL: ""
+    preSQL: ""
+    testsEnabled: true
+    truncateBefore: true
+  database: ""
+  deployEnabled: true
+  description: ""
+  isMultisource: false
+  locationName: DESTINATION
+  materializationType: table
+  metadata:
+    appliedNodeTests: []
+    columns:
+      - appliedColumnTests: {}
+        columnReference:
+          columnCounter: 9171a256-807c-44d1-857e-17abbbc29cbc
+          stepCounter: 886d09e4-85d0-4b8b-a1f5-839ed2453ee7
+        config: {}
+        dataType: TIMESTAMP
+        description: ""
+        name: t
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: 5fb6336f-7708-4b38-84c3-182a88ad1e36
+                stepCounter: 8af4545a-ab1d-4c41-a4d1-df16beee701b
+            transform: ""
+      - appliedColumnTests: {}
+        columnReference:
+          columnCounter: fc32ff7b-0bba-4ada-a3d4-7a475cd01c98
+          stepCounter: 886d09e4-85d0-4b8b-a1f5-839ed2453ee7
+        config: {}
+        dataType: VARIANT
+        description: ""
+        name: v
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: 310f42ea-8657-4b7f-b345-d8100547e255
+                stepCounter: 8af4545a-ab1d-4c41-a4d1-df16beee701b
+            transform: ""
+    cteString: ""
+    enabledColumnTestIDs: []
+    sourceMapping:
+      - aliases:
+          stg_daily_14_total_short6: 8af4545a-ab1d-4c41-a4d1-df16beee701b
+        dependencies:
+          - locationName: DESTINATION
+            nodeName: stg_daily_14_total_short6
+        join:
+          joinCondition: FROM {{ ref('DESTINATION', 'stg_daily_14_total_short6') }} `stg_daily_14_total_short6`
+        name: stg_daily_14_total_short9
+        noLinkRefs: []
+  name: stg_daily_14_total_short9
+  overrideSQL: false
+  schema: ""
+  sqlType: Stage
+  type: sql
+  version: 1
+type: Node

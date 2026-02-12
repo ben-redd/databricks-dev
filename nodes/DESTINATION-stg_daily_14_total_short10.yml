@@ -1,0 +1,66 @@
+fileVersion: 1
+id: bb22f43f-5281-4c92-b2d2-5f5988cde873
+name: stg_daily_14_total_short10
+operation:
+  config:
+    insertStrategy: INSERT
+    postSQL: ""
+    preSQL: ""
+    testsEnabled: true
+    truncateBefore: true
+  database: ""
+  deployEnabled: true
+  description: ""
+  isMultisource: false
+  locationName: DESTINATION
+  materializationType: table
+  metadata:
+    appliedNodeTests: []
+    columns:
+      - appliedColumnTests: {}
+        columnReference:
+          columnCounter: 16d4f748-1298-44b5-806f-d6b8070a61e6
+          stepCounter: bb22f43f-5281-4c92-b2d2-5f5988cde873
+        config: {}
+        dataType: TIMESTAMP
+        description: ""
+        name: t
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: db62cce6-d747-4ea1-9fd4-3228f7a0dfe3
+                stepCounter: d9f1ceb4-1492-45e1-9490-468c51b2c5cb
+            transform: ""
+      - appliedColumnTests: {}
+        columnReference:
+          columnCounter: 0118e939-ed80-4467-a8dc-6aaaf1823578
+          stepCounter: bb22f43f-5281-4c92-b2d2-5f5988cde873
+        config: {}
+        dataType: VARIANT
+        description: ""
+        name: v
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: 8f400626-4fb6-4d4d-a731-eaed6679a168
+                stepCounter: d9f1ceb4-1492-45e1-9490-468c51b2c5cb
+            transform: ""
+    cteString: ""
+    enabledColumnTestIDs: []
+    sourceMapping:
+      - aliases:
+          daily_14_total_short: d9f1ceb4-1492-45e1-9490-468c51b2c5cb
+        dependencies:
+          - locationName: SOURCE
+            nodeName: daily_14_total_short
+        join:
+          joinCondition: FROM {{ ref('SOURCE', 'daily_14_total_short') }} `daily_14_total_short`
+        name: stg_daily_14_total_short10
+        noLinkRefs: []
+  name: stg_daily_14_total_short10
+  overrideSQL: false
+  schema: ""
+  sqlType: Stage
+  type: sql
+  version: 1
+type: Node

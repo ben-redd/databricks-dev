@@ -1,0 +1,80 @@
+fileVersion: 1
+id: d22dc093-6055-47ec-8cba-665ca94dfc26
+name: stg_name_update
+operation:
+  config:
+    insertStrategy: INSERT
+    postSQL: ""
+    preSQL: ""
+    testsEnabled: true
+    truncateBefore: true
+  database: ""
+  deployEnabled: true
+  description: ""
+  isMultisource: false
+  locationName: DESTINATION
+  materializationType: table
+  metadata:
+    appliedNodeTests: []
+    columns:
+      - appliedColumnTests: {}
+        columnReference:
+          columnCounter: fca6f62a-8778-420d-955a-16ed519dbd80
+          stepCounter: d22dc093-6055-47ec-8cba-665ca94dfc26
+        config: {}
+        dataType: LONG
+        description: test
+        name: r_regionkey
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: 2da4e89d-b19c-4dd7-862b-202c60ec1343
+                stepCounter: ed7361e0-3e93-429f-8cc1-d904cd7cbe7b
+            transform: ""
+      - appliedColumnTests: {}
+        columnReference:
+          columnCounter: 8f72c3d1-dcc6-4014-b0da-b755d9b2a99f
+          stepCounter: d22dc093-6055-47ec-8cba-665ca94dfc26
+        config: {}
+        dataType: STRING
+        description: ""
+        name: r_name
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: f0d84f49-abf6-4aa4-a7f1-f337896c2553
+                stepCounter: ed7361e0-3e93-429f-8cc1-d904cd7cbe7b
+            transform: ""
+      - appliedColumnTests: {}
+        columnReference:
+          columnCounter: e4f21187-b1b6-4b74-9a6b-37b1b031c425
+          stepCounter: d22dc093-6055-47ec-8cba-665ca94dfc26
+        config: {}
+        dataType: STRING
+        description: ""
+        name: r_comment
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: 29edc461-f674-4c85-9402-99f7d0441cbd
+                stepCounter: ed7361e0-3e93-429f-8cc1-d904cd7cbe7b
+            transform: ""
+    cteString: ""
+    enabledColumnTestIDs: []
+    sourceMapping:
+      - aliases:
+          name_update: ed7361e0-3e93-429f-8cc1-d904cd7cbe7b
+        dependencies:
+          - locationName: DESTINATION
+            nodeName: name_update
+        join:
+          joinCondition: FROM {{ ref('DESTINATION', 'name_update') }} `name_update`
+        name: stg_name_update
+        noLinkRefs: []
+  name: stg_name_update
+  overrideSQL: false
+  schema: ""
+  sqlType: Stage
+  type: sql
+  version: 1
+type: Node
