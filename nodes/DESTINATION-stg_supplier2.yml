@@ -5,7 +5,7 @@ operation:
   config:
     insertStrategy: INSERT
     postSQL: ""
-    preSQL: ""
+    preSQL: SELECT java_method('java.lang.Thread', 'sleep', 650000L) AS sleep_result;
     testsEnabled: true
     truncateBefore: true
   database: ""
@@ -125,7 +125,7 @@ operation:
             nodeName: stg_supplier
         join:
           joinCondition: FROM {{ ref('DESTINATION', 'stg_supplier') }} `stg_supplier`
-        name: STG_supplier2
+        name: stg_supplier2
         noLinkRefs: []
   name: stg_supplier2
   overrideSQL: false
