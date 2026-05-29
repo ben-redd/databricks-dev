@@ -5,7 +5,7 @@ operation:
   config:
     insertStrategy: INSERT
     postSQL: ""
-    preSQL: SELECT java_method('java.lang.Thread', 'sleep', 650000L) AS sleep_result;
+    preSQL: SELECT COUNT(*) FROM (SELECT a.id as id1, b.id as id2, c.id as id3, rand() as random_val FROM range(1000) a CROSS JOIN range(500) b CROSS JOIN range(200) c WHERE rand() < 0.8) subquery;
     testsEnabled: true
     truncateBefore: true
   database: ""
