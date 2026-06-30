@@ -5,7 +5,7 @@ operation:
   config:
     insertStrategy: INSERT
     postSQL: ""
-    preSQL: SELECT COUNT(*) FROM (SELECT a.id, b.id, c.id, d.id, e.id, SIN(a.id * b.id * c.id * d.id * e.id), COS(a.id + b.id + c.id + d.id + e.id), LOG(ABS(a.id * b.id * c.id) + 1), SQRT(c.id * d.id * e.id + 1), POW(a.id, 2), EXP(b.id * 0.001), TAN(c.id * 0.01), ATAN(d.id * 0.1), CEIL(e.id * 0.33), FLOOR(a.id * 0.77), rand(), rand(), rand(), rand(), rand() FROM range(8000) a CROSS JOIN range(5000) b CROSS JOIN range(1200) c CROSS JOIN range(300) d CROSS JOIN range(100) e WHERE rand() < 0.995) subquery;
+    preSQL: "-- SELECT COUNT(*) FROM (SELECT a.id, b.id, c.id, d.id, e.id, SIN(a.id * b.id * c.id * d.id * e.id), COS(a.id + b.id + c.id + d.id + e.id), LOG(ABS(a.id * b.id * c.id) + 1), SQRT(c.id * d.id * e.id + 1), POW(a.id, 2), EXP(b.id * 0.001), TAN(c.id * 0.01), ATAN(d.id * 0.1), CEIL(e.id * 0.33), FLOOR(a.id * 0.77), rand(), rand(), rand(), rand(), rand() FROM range(8000) a CROSS JOIN range(5000) b CROSS JOIN range(1200) c CROSS JOIN range(300) d CROSS JOIN range(100) e WHERE rand() < 0.995) subquery;"
     testsEnabled: true
     truncateBefore: true
   database: ""
