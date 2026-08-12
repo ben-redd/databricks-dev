@@ -146,12 +146,19 @@ operation:
     cteString: ""
     enabledColumnTestIDs: []
     sourceMapping:
-      - aliases: {}
+      - aliases:
+          customer: 443d1630-1eda-41da-8068-fedb12e511da
+          orders: 88da39b6-645a-4665-8afa-b199f858ce27
         dependencies:
+          - locationName: SOURCE
+            nodeName: customer
           - locationName: SOURCE
             nodeName: orders
         join:
-          joinCondition: FROM {{ ref('SOURCE', 'orders') }} `orders`
+          joinCondition: |-
+            FROM {{ ref('SOURCE', 'orders') }} `orders`
+            JOIN {{ ref('SOURCE', 'customer') }} `customer`
+              ON `orders`.`o_custkey` = `customer`.`c_custkey`
         name: stg_orders
         noLinkRefs: []
   name: stg_orders

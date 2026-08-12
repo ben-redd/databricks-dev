@@ -1,0 +1,59 @@
+fileVersion: 1
+id: 7816f905-4f0a-4a57-93aa-266bb76e35ae
+isDisabled: false
+metadata:
+  defaultStorageLocation: null
+  error: null
+  nodeMetadataSpec: |
+    capitalized: Custom View
+    short: v
+    tagColor: '#F4C4C4'
+    isDisabled: true
+    plural: Views
+
+    config:
+      - groupName: Options
+        items:
+
+        - displayName: OverrideCreateSQL
+          attributeName: OverrideSQLCreate
+          type: overrideSQLToggle
+          default: false
+
+        - type: multisourceToggle
+          enableIf: "{% if  node.override.create.enabled %} false {% else %} true {% endif %}"
+          default: false
+
+        - displayName: Multi Source Strategy
+          attributeName: insertStrategy
+          type: dropdownSelector
+          default: UNION
+          options:
+          - "UNION"
+          - "UNION ALL"
+          isRequired: false
+          enableIf: "{% if node.isMultisource %} true {% else %} false {% endif %}"
+
+        - displayName: Distinct
+          attributeName: selectDistinct
+          type: toggleButton
+          enableIf: "{% if config.groupByAll or  node.override.create.enabled %} false {% else %} true {% endif %}"
+          default: false
+
+        - displayName: Group By All
+          attributeName: groupByAll
+          type: toggleButton
+          enableIf: "{% if config.selectDistinct or node.override.create.enabled %} false {% else %} true {% endif %}"
+          default: false
+
+      - groupName: Materialization
+        items:
+        - displayName: Type
+          type: materializationSelector
+          default:  table
+          options:
+          - table  
+          - view
+          isRequired: false
+name: Custom View
+type: NodeType
